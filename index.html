@@ -34,6 +34,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             color: #ffffff;
+            overflow: visible;
         }
         .hero-name::before {
             content: '';
@@ -50,24 +51,15 @@
             pointer-events: none;
         }
         .hero-name:hover::before {
-            width: 120%;
-            height: 200%;
+            width: 130%;
+            height: 250%;
         }
         .hero-name:hover {
             transform: scale(1.05);
-        }
-        .hero-name:hover .char {
             background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: letterWave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        /* Letter wave on hover */
-        .hero-name .char {
-            display: inline;
-            transition: all 0.3s ease;
         }
         @keyframes letterWave {
             0% { transform: translateY(0) rotate(0deg); }
@@ -1050,25 +1042,7 @@
 
         // Split hero name into chars for wave animation
         const heroName = document.getElementById('heroName');
-        if (heroName) {
-            const text = heroName.textContent;
-            heroName.innerHTML = '';
-            const words = text.split(' ');
-            words.forEach((word, wi) => {
-                const wordSpan = document.createElement('span');
-                wordSpan.style.display = 'inline-block';
-                word.split('').forEach((char) => {
-                    const span = document.createElement('span');
-                    span.className = 'char';
-                    span.textContent = char;
-                    wordSpan.appendChild(span);
-                });
-                heroName.appendChild(wordSpan);
-                if (wi < words.length - 1) {
-                    heroName.appendChild(document.createTextNode(' '));
-                }
-            });
-        }
+        // No character splitting - keep text simple for proper centering
 
         // Split text reveal for headings
         document.querySelectorAll('.split-reveal').forEach(el => {
