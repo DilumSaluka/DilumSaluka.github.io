@@ -28,39 +28,31 @@
            HERO NAME - White normally, gradient + glow on hover
            ============================================ */
         .hero-name {
-            display: block;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             cursor: default;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             color: #ffffff;
-            overflow: visible;
         }
-        .hero-name::before {
+        .hero-name::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            background: radial-gradient(ellipse, rgba(139, 92, 246, 0.5) 0%, rgba(99, 102, 241, 0.3) 40%, transparent 70%);
+            inset: -20px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
             border-radius: 50%;
-            transition: all 0.5s ease;
             z-index: -1;
-            pointer-events: none;
-        }
-        .hero-name:hover::before {
-            width: 130%;
-            height: 250%;
         }
         .hero-name:hover {
             transform: scale(1.05);
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            filter: hue-rotate(30deg) brightness(1.1);
             text-shadow: 0 0 40px rgba(99, 102, 241, 0.5), 0 0 80px rgba(139, 92, 246, 0.3);
+        }
+        .hero-name:hover::after {
+            opacity: 1;
         }
         .hero-name .char {
             display: inline;
