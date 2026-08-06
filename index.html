@@ -28,8 +28,9 @@
            HERO NAME HOVER - Glow + letter bounce
            ============================================ */
         .hero-name {
-            display: block;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             cursor: default;
             transition: all 0.3s ease;
         }
@@ -55,8 +56,9 @@
            HERO NAME - Magnetic tilt + color shift + particle burst
            ============================================ */
         .hero-name {
-            display: block;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             cursor: default;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
@@ -1067,7 +1069,6 @@
         // Split hero name into chars for wave animation
         const heroName = document.getElementById('heroName');
         if (heroName) {
-            const originalHTML = heroName.innerHTML;
             const text = heroName.textContent;
             heroName.innerHTML = '';
             text.split('').forEach((char, i) => {
@@ -1075,7 +1076,6 @@
                 span.className = 'char';
                 span.textContent = char === ' ' ? '\u00A0' : char;
                 span.style.animationDelay = `${i * 0.05}s`;
-                if (char === ' ') span.style.width = '0.3em';
                 heroName.appendChild(span);
             });
         }
