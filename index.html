@@ -33,6 +33,10 @@
             cursor: default;
             transition: all 0.3s ease;
             position: relative;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-name:hover {
             text-shadow: 0 0 40px rgba(99, 102, 241, 0.5), 0 0 80px rgba(139, 92, 246, 0.3);
@@ -61,16 +65,24 @@
             cursor: default;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-name:hover {
             transform: scale(1.05);
-            filter: hue-rotate(30deg) brightness(1.1);
+            filter: brightness(1.2);
         }
 
         /* Letter wave on hover */
         .hero-name .char {
             display: inline;
             transition: all 0.3s ease;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-name:hover .char {
             animation: letterWave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -1061,16 +1073,17 @@
             heroName.innerHTML = '';
             const words = text.split(' ');
             words.forEach((word, wi) => {
-                word.split('').forEach((char, ci) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.style.display = 'inline-block';
+                word.split('').forEach((char) => {
                     const span = document.createElement('span');
                     span.className = 'char';
                     span.textContent = char;
-                    heroName.appendChild(span);
+                    wordSpan.appendChild(span);
                 });
+                heroName.appendChild(wordSpan);
                 if (wi < words.length - 1) {
-                    const space = document.createElement('span');
-                    space.innerHTML = '&nbsp;';
-                    heroName.appendChild(space);
+                    heroName.appendChild(document.createTextNode(' '));
                 }
             });
         }
