@@ -25,45 +25,7 @@
         body { user-select: none; -webkit-user-select: none; }
 
         /* ============================================
-           HERO NAME HOVER - Glow + letter bounce
-           ============================================ */
-        .hero-name {
-            display: block;
-            text-align: center;
-            cursor: default;
-            transition: all 0.3s ease;
-            position: relative;
-            color: #ffffff;
-        }
-        .hero-name:hover {
-            text-shadow: 0 0 40px rgba(99, 102, 241, 0.6), 0 0 80px rgba(139, 92, 246, 0.4), 0 0 120px rgba(236, 72, 153, 0.2);
-        }
-        .hero-name:hover .char {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-name:hover {
-            text-shadow: 0 0 40px rgba(99, 102, 241, 0.5), 0 0 80px rgba(139, 92, 246, 0.3);
-        }
-        .hero-name:hover .char-bounce {
-            animation: charBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-        .char-bounce {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-        @keyframes charBounce {
-            0% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(5px); }
-            80% { transform: translateY(-3px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* ============================================
-           HERO NAME - Magnetic tilt + color shift + particle burst
+           HERO NAME - White normally, gradient + glow on hover
            ============================================ */
         .hero-name {
             display: block;
@@ -73,15 +35,26 @@
             position: relative;
             color: #ffffff;
         }
+        .hero-name::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: radial-gradient(ellipse, rgba(139, 92, 246, 0.5) 0%, rgba(99, 102, 241, 0.3) 40%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .hero-name:hover::before {
+            width: 120%;
+            height: 200%;
+        }
         .hero-name:hover {
             transform: scale(1.05);
-            text-shadow: 0 0 40px rgba(99, 102, 241, 0.6), 0 0 80px rgba(139, 92, 246, 0.4), 0 0 120px rgba(236, 72, 153, 0.2);
-        }
-
-        /* Letter wave on hover */
-        .hero-name .char {
-            display: inline;
-            transition: all 0.3s ease;
         }
         .hero-name:hover .char {
             background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
@@ -89,6 +62,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: letterWave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Letter wave on hover */
+        .hero-name .char {
+            display: inline;
+            transition: all 0.3s ease;
         }
         @keyframes letterWave {
             0% { transform: translateY(0) rotate(0deg); }
