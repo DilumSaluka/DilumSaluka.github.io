@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilum Saluka | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; user-select: none; -webkit-user-select: none; }
+        body { user-select: none; -webkit-user-select: none; }
+
+        /* ============================================
+           HERO NAME HOVER - Glow + letter bounce
+           ============================================ */
+        .hero-name {
+            display: inline-block;
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+        .hero-name:hover {
+            text-shadow: 0 0 40px rgba(99, 102, 241, 0.5), 0 0 80px rgba(139, 92, 246, 0.3);
+        }
+        .hero-name:hover .char-bounce {
+            animation: charBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .char-bounce {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        @keyframes charBounce {
+            0% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(5px); }
+            80% { transform: translateY(-3px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* ============================================
+           HERO NAME - Magnetic tilt + color shift + particle burst
+           ============================================ */
+        .hero-name {
+            display: inline-block;
+            cursor: default;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .hero-name:hover {
+            transform: scale(1.05);
+            filter: hue-rotate(30deg) brightness(1.1);
+        }
+        .hero-name::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .hero-name:hover::after { opacity: 1; }
+
+        /* Letter wave on hover */
+        .hero-name .char {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .hero-name:hover .char {
+            animation: letterWave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes letterWave {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-3deg); }
+            50% { transform: translateY(5px) rotate(2deg); }
+            75% { transform: translateY(-3px) rotate(-1deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* ============================================
+           SCROLL REVEAL ANIMATIONS
+           ============================================ */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-in-right { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in { opacity: 0; transform: scale(0.9); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+
+        /* Blur reveal - text blurs in */
+        .blur-reveal { filter: blur(10px); opacity: 0; transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .blur-reveal.visible { filter: blur(0); opacity: 1; }
+
+        /* Slide up reveal */
+        .slide-up { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Rotate in */
+        .rotate-in { opacity: 0; transform: rotate(-10deg) scale(0.9); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .rotate-in.visible { opacity: 1; transform: rotate(0) scale(1); }
+
+        /* Stagger children */
+        .stagger > * { transition-delay: calc(var(--i, 0) * 150ms); }
+
+        /* ============================================
+           SHINY TEXT - Gradient sweep across text
+           ============================================ */
+        .shiny-text {
+            background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 25%, #ec4899 50%, #8b5cf6 75%, #3b82f6 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shinyText 3s linear infinite;
+        }
+        @keyframes shinyText {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ============================================
+           TEXT SPLIT REVEAL - Letters animate in
+           ============================================ */
+        .split-reveal .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(40px) rotateX(-40deg);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .split-reveal.visible .char {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        /* ============================================
+           GRADIENT TEXT
+           ============================================ */
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .dark .gradient-text { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* ============================================
+           BLOB - Animated background blobs
+           ============================================ */
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: blobPulse 8s ease-in-out infinite; }
+        .dark .blob { opacity: 0.08; }
+        @keyframes blobPulse {
+            0%, 100% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+        .dark .blob { animation: blobPulseDark 8s ease-in-out infinite; }
+        @keyframes blobPulseDark {
+            0%, 100% { transform: scale(1); opacity: 0.08; }
+            50% { transform: scale(1.1); opacity: 0.12; }
+        }
+
+        /* ============================================
+           PARTICLES
+           ============================================ */
+        .particle { position: absolute; border-radius: 50%; pointer-events: none; animation: float linear infinite; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ============================================
+           GLOW PULSE - Breathing glow effect
+           ============================================ */
+        .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+
+        /* ============================================
+           FLOAT ANIMATION
+           ============================================ */
+        .float { animation: floatSlow 6s ease-in-out infinite; }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ============================================
+           HOVER ANIMATIONS
+           ============================================ */
+
+        /* 1. NAV LINKS - Background fill + scale on hover */
+        .nav-link {
+            position: relative;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+            border-radius: 8px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+        .nav-link:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .dark .nav-link:hover { color: #60a5fa; }
+
+        /* 2. PRIMARY BUTTONS - Scale + glow expand + shimmer */
+        .btn-primary {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:active { transform: translateY(0) scale(0.98); }
+
+        /* 3. OUTLINE BUTTONS - Border draw + fill */
+        .btn-outline {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: transparent;
+            z-index: 1;
+        }
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: inherit;
+        }
+        .btn-outline:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        .btn-outline:hover::before { opacity: 1; }
+
+        /* 4. SKILL CARDS - Top gradient bar reveal */
+        .skill-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .skill-card:hover::before { transform: scaleX(1); }
+        .dark .skill-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        /* 5. PROJECT CARDS - Lift + shimmer + float icon */
+        .project-card { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .dark .project-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        /* 6. CONTACT CARDS - Icon bounce */
+        .contact-card { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .contact-card:hover .contact-icon {
+            animation: iconBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .contact-icon { transition: all 0.3s ease; }
+        @keyframes iconBounce {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.2); }
+            60% { transform: scale(0.95); }
+            80% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .dark .contact-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+
+        /* 7. SECTION HEADINGS - Gradient reveal */
+        .heading-hover {
+            display: inline-block;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .heading-hover::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2px;
+        }
+        .heading-hover:hover::after { width: 60px; }
+        .heading-hover:hover { letter-spacing: 0.5px; }
+
+        /* 8. TIMELINE DOTS - Pulse ring */
+        .timeline-dot { position: relative; }
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-dot::after {
+            opacity: 0.5;
+            transform: scale(1);
+            animation: ringPulse 1s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 0; }
+        }
+
+        /* 8b. TIMELINE BOXES - Slide right + glow border */
+        .timeline-item > div:last-child {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .timeline-item:hover > div:last-child {
+            transform: translateX(12px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .dark .timeline-item:hover > div:last-child {
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+
+        /* 9. TAG CHIPS - Bounce + glow */
+        .tag-chip { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .tag-chip:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+        .dark .tag-chip:hover { box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3); }
+
+        /* 10. DARK MODE TOGGLE - Rotate + glow */
+        #theme-toggle {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #theme-toggle:hover {
+            transform: rotate(30deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+        #theme-toggle:active {
+            transform: rotate(60deg) scale(0.95);
+        }
+
+        /* 11. LOGO - Bounce */
+        .logo-link { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .logo-link:hover { transform: scale(1.1); }
+
+        /* 12. GLITCH EFFECT - On hover */
+        .glitch-hover { position: relative; }
+        .glitch-hover:hover {
+            animation: glitch 0.3s ease;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        /* 13. MAGNETIC HOVER - Subtle follow cursor */
+        .magnetic { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        /* 14. TYPING CURSOR */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s step-end infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+
+        /* 15. SCROLL PROGRESS BAR */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+
+        /* 16. RIPPLE EFFECT ON CLICK */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            width: 100px;
+            height: 100px;
+            margin-top: -50px;
+            margin-left: -50px;
+            top: 50%;
+            left: 50%;
+            transform: scale(0);
+            opacity: 1;
+            transition: none;
+        }
+        .ripple:active::after {
+            transform: scale(4);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        /* 17. ANIMATION SOURCE CARDS */
+        .source-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .source-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        .source-card:hover::before {
+            left: 100%;
+        }
+        .source-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .source-card .source-icon {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .source-card:hover .source-icon {
+            transform: scale(1.3) rotate(10deg);
+            filter: drop-shadow(0 0 12px currentColor);
+        }
+        .source-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        .source-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans dark:bg-slate-900 dark:text-slate-200 transition-colors duration-500">
+
+    <!-- Swarm Cursor Canvas -->
+    <canvas id="swarmCanvas" class="fixed inset-0 pointer-events-none z-[9999]"></canvas>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Particles Container -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-200/50 dark:border-slate-700/50 transition-colors duration-500">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold gradient-text logo-link">DS</a>
+            <div class="flex items-center gap-6">
+                <a href="#about" class="text-sm font-medium text-slate-600 dark:text-slate-400 nav-link">About</a>
+                <a href="#skills" class="text-sm font-medium text-slate-600 dark:text-slate-400 nav-link">Skills</a>
+                <a href="#projects" class="text-sm font-medium text-slate-600 dark:text-slate-400 nav-link">Projects</a>
+                <a href="#education" class="text-sm font-medium text-slate-600 dark:text-slate-400 nav-link">Education</a>
+                <a href="#contact" class="text-sm font-medium text-slate-600 dark:text-slate-400 nav-link">Contact</a>
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300" aria-label="Toggle dark mode">
+                    <svg class="w-5 h-5 text-slate-600 dark:text-yellow-400 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                    <svg class="w-5 h-5 text-slate-600 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="blob w-96 h-96 bg-blue-500 top-20 -left-48"></div>
+        <div class="blob w-96 h-96 bg-purple-500 bottom-20 -right-48"></div>
+        <div class="blob w-64 h-64 bg-pink-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="text-center z-10 px-6">
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 tracking-widest uppercase mb-4 fade-in" style="--i:0">Welcome to my portfolio</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 fade-in hero-name" id="heroName" style="--i:1">
+                Dilum <span class="gradient-text">Saluka</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-light mb-8 fade-in" style="--i:2">
+                <span class="shiny-text">Cyber Security Student</span> <span class="text-slate-300 dark:text-slate-600">|</span> Vibe Coder <span class="text-slate-300 dark:text-slate-600">|</span> Tech Passionate
+            </p>
+            <div class="flex gap-4 justify-center fade-in" style="--i:3">
+                <a href="#projects" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-full btn-primary glow-pulse ripple">View Projects</a>
+                <a href="#contact" class="px-6 py-3 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium rounded-full btn-outline ripple">Get in Touch</a>
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 fade-in" style="--i:4">
+            <span class="text-xs text-slate-400 dark:text-slate-500 tracking-widest">SCROLL</span>
+            <div class="w-5 h-8 border-2 border-slate-300 dark:border-slate-600 rounded-full flex justify-center pt-1">
+                <div class="w-1 h-2 bg-slate-400 dark:bg-slate-500 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto fade-in">
+            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase mb-2">About Me</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6"><span class="heading-hover">A bit about myself</span></h2>
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-sm dark:shadow-slate-700/50 border border-slate-100 dark:border-slate-700 transition-colors duration-500 space-y-6">
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed blur-reveal" style="--i:0">
+                    I'm a first-year student in the BSc (Hons) Ethical Hacking and Network Security programme at NIBM, delivered in collaboration with Coventry University. I'm currently in the Diploma in Network Engineering stage, building a foundation in computer science, programming, and networking before moving into more advanced security modules.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed blur-reveal" style="--i:1">
+                    I love making games, Windows apps, Android apps — anything tech. I'm not just a "cybersecurity student" or a "vibe coder." I'm someone who is genuinely passionate about the entire tech field — AI, computing, and everything in between. The problem? It's so big, I don't know where it starts or where it ends. But that's what makes it exciting.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed blur-reveal" style="--i:2">
+                    I chose cybersecurity because I'm from Sri Lanka. We're not the most technologically advanced country, but we have real problems — scams, cyber crimes, and people getting exploited every day. I want to help fix that. I love my country, and I want to be someone who protects it.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed blur-reveal" style="--i:3">
+                    This isn't about getting a job or chasing money. I genuinely love technology. I want to learn everything — every language, every system, every concept — before I leave this world. I want to be a responsible person who contributed something meaningful. I'll do it. I know I will.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed blur-reveal" style="--i:4">
+                    I speak Sinhala and English, and I'm looking forward to connecting with others in networking, security, and software development as I grow in this field.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24 px-6 bg-white dark:bg-slate-800/50 transition-colors duration-500">
+        <div class="max-w-6xl mx-auto fade-in">
+            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase mb-2">Skills</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="heading-hover">What I bring to the table</span></h2>
+            <div class="grid md:grid-cols-3 gap-6 stagger">
+                <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 skill-card" style="--i:0">
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Development</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Kotlin, JavaScript, Electron, Android, React, Tailwind CSS, Game Dev</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 skill-card" style="--i:1">
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Cyber Security</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Network Security, Ethical Hacking, Threat Analysis, Digital Forensics</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 skill-card" style="--i:2">
+                    <div class="tilt-inner">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">AI & Vibe Coding</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">AI-Assisted Development, Learning by Building, Customizing & Understanding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto fade-in">
+            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase mb-2">Projects</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="heading-hover">Things I've built</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- VibeNav -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm dark:shadow-slate-700/50 border border-slate-100 dark:border-slate-700 project-card scale-in" style="--i:0">
+                    <div class="tilt-inner">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-8 text-white relative overflow-hidden">
+                            <div class="absolute inset-0 shimmer"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <svg class="w-8 h-8 float" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                                    <span class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Android</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">VibeNav</h3>
+                                <p class="text-blue-100">Free Android navigation app with proximity alerts, voice guidance, live weather & real-time GPS tracking.</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Kotlin</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">OpenStreetMap</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">OSRM</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Nominatim</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Open-Meteo</span>
+                            </div>
+                            <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1 mb-6">
+                                <li>Live map with satellite view, zoom up to 22x</li>
+                                <li>Voice alerts with adjustable trigger radius</li>
+                                <li>Background GPS tracking with ETA</li>
+                                <li>Offline maps, trip history, save places</li>
+                                <li>No API keys needed, completely free</li>
+                            </ul>
+                            <div class="flex gap-3">
+                                <a href="https://github.com/DilumSaluka/VibeNav" target="_blank" class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    Source
+                                </a>
+                                <a href="https://github.com/DilumSaluka/VibeNav/releases" target="_blank" class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition">Download APK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sweep-Helper -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm dark:shadow-slate-700/50 border border-slate-100 dark:border-slate-700 project-card scale-in" style="--i:1">
+                    <div class="tilt-inner">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-8 text-white relative overflow-hidden">
+                            <div class="absolute inset-0 shimmer"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <svg class="w-8 h-8 float" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    <span class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Desktop</span>
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Sweep Helper</h3>
+                                <p class="text-emerald-100">Clean your PC in one click. Free, open-source Windows cleaner with undo support.</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">JavaScript</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Electron</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">React</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Tailwind CSS</span>
+                                <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full tag-chip">Vite</span>
+                            </div>
+                            <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1 mb-6">
+                                <li>One-click sweep with safe undo support</li>
+                                <li>Browser cache, temp files, Recycle Bin cleanup</li>
+                                <li>App uninstaller, large file finder, duplicate finder</li>
+                                <li>Startup manager, scheduled cleanup</li>
+                                <li>Zero telemetry, zero ads, fully offline</li>
+                            </ul>
+                            <div class="flex gap-3">
+                                <a href="https://github.com/DilumSaluka/Sweep-Helper" target="_blank" class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    Source
+                                </a>
+                                <a href="https://github.com/DilumSaluka/Sweep-Helper/releases" target="_blank" class="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-24 px-6 bg-white dark:bg-slate-800/50 transition-colors duration-500">
+        <div class="max-w-4xl mx-auto fade-in">
+            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase mb-2">Education</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-12"><span class="heading-hover">My academic journey</span></h2>
+            <p class="text-slate-500 dark:text-slate-400 mb-8 -mt-8">Building the foundation to protect Sri Lanka from cyber threats.</p>
+            <div class="space-y-6">
+                <div class="flex gap-6 fade-in-left timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-blue-600 rounded-full ring-4 ring-blue-100 dark:ring-blue-900/50 timeline-dot"></div>
+                        <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700 mt-2"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">BSc in Network and Cyber Security</h3>
+                            <span class="text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full">2025 - Present</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">National Institute of Business Management (NIBM) &bull; First Year</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 fade-in-right timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-emerald-600 rounded-full timeline-dot"></div>
+                        <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700 mt-2"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Diploma in Information & Communication Technology</h3>
+                            <span class="text-xs font-medium bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full">2024 - 2025</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">IMBS Green Campus &bull; Completed</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 fade-in-left timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-purple-600 rounded-full timeline-dot"></div>
+                        <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700 mt-2"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Diploma in Human Resources Management</h3>
+                            <span class="text-xs font-medium bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full">2023 - 2024</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Institute of Vocational and Technological Guidance</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 fade-in-right timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-emerald-600 rounded-full timeline-dot"></div>
+                        <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700 mt-2"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Diploma in English</h3>
+                            <span class="text-xs font-medium bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full">2023 - 2024</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Institute of Vocational and Technological Guidance</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 fade-in-left timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-orange-500 rounded-full timeline-dot"></div>
+                        <div class="w-0.5 h-full bg-slate-200 dark:bg-slate-700 mt-2"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">G.C.E. Advanced Level</h3>
+                            <span class="text-xs font-medium bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full">2024</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Hanwella Rajasinghe Central College</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 fade-in-right timeline-item">
+                    <div class="flex flex-col items-center">
+                        <div class="w-4 h-4 bg-slate-400 rounded-full timeline-dot"></div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 flex-1 card-hover">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">G.C.E. Ordinary Level</h3>
+                            <span class="text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full">2021</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Bomiriya Central College</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto fade-in text-center">
+            <p class="text-sm font-medium text-blue-600 dark:text-blue-400 tracking-widest uppercase mb-2">Contact</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6"><span class="heading-hover">Let's connect</span></h2>
+            <p class="text-lg text-slate-500 dark:text-slate-400 mb-12">Feel free to reach out for collaborations or just a friendly hello!</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="mailto:dilumsaluka965@gmail.com" class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm contact-card group">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition contact-icon">
+                        <svg class="w-6 h-6 text-blue-600 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">Email</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">dilumsaluka965@gmail.com</p>
+                </a>
+                <a href="https://www.linkedin.com/in/dilum-saluka-641a71384/" target="_blank" class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm contact-card group">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-700 transition contact-icon">
+                        <svg class="w-6 h-6 text-blue-700 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">LinkedIn</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">Dilum Saluka</p>
+                </a>
+                <a href="https://github.com/DilumSaluka" target="_blank" class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm contact-card group">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-slate-700 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-slate-800 transition contact-icon">
+                        <svg class="w-6 h-6 text-slate-800 dark:text-slate-300 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">GitHub</h3>
+                    <p class="text-sm text-slate-500 dark:text-slate-400">@DilumSaluka</p>
+                </a>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+                <p class="text-slate-400 dark:text-slate-500 text-sm">&copy; 2026 Dilum Saluka. Built with care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animation Sources -->
+    <section class="py-16 px-6 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-2 gradient-text">Animation Sources</h2>
+            <p class="text-slate-500 dark:text-slate-400 mb-10">Where the magic comes from</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="https://reactbits.dev" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600">
+                    <div class="text-3xl mb-3 source-icon">⚛️</div>
+                    <h3 class="font-semibold text-sm">React Bits</h3>
+                    <p class="text-xs text-slate-400 mt-1">Text effects, backgrounds, hero sections</p>
+                </a>
+                <a href="https://ui.aceternity.com" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-purple-300 dark:hover:border-purple-600">
+                    <div class="text-3xl mb-3 source-icon">🎨</div>
+                    <h3 class="font-semibold text-sm">Aceternity UI</h3>
+                    <p class="text-xs text-slate-400 mt-1">Glowing cards, particle effects, 3D cards</p>
+                </a>
+                <a href="https://www.framer.com/motion/" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-cyan-300 dark:hover:border-cyan-600">
+                    <div class="text-3xl mb-3 source-icon">🎞️</div>
+                    <h3 class="font-semibold text-sm">Framer Motion</h3>
+                    <p class="text-xs text-slate-400 mt-1">Scroll animations, hover effects, transitions</p>
+                </a>
+                <a href="https://fontawesome.com" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-yellow-300 dark:hover:border-yellow-600">
+                    <div class="text-3xl mb-3 source-icon">✨</div>
+                    <h3 class="font-semibold text-sm">Font Awesome</h3>
+                    <p class="text-xs text-slate-400 mt-1">Icons used across the site</p>
+                </a>
+                <a href="https://tailwindcss.com" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-sky-300 dark:hover:border-sky-600">
+                    <div class="text-3xl mb-3 source-icon">💨</div>
+                    <h3 class="font-semibold text-sm">Tailwind CSS</h3>
+                    <p class="text-xs text-slate-400 mt-1">Utility-first styling framework</p>
+                </a>
+                <a href="https://css-tricks.com" target="_blank" class="source-card group bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-green-300 dark:hover:border-green-600">
+                    <div class="text-3xl mb-3 source-icon">📝</div>
+                    <h3 class="font-semibold text-sm">CSS Tricks</h3>
+                    <p class="text-xs text-slate-400 mt-1">Custom CSS animation techniques</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check saved preference or system preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .blur-reveal, .slide-up, .rotate-in, .timeline-item').forEach(el => observer.observe(el));
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600', 'dark:text-blue-400');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('text-blue-600', 'dark:text-blue-400');
+                }
+            });
+        });
+
+        // Create particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4'];
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    width: ${Math.random() * 6 + 2}px;
+                    height: ${Math.random() * 6 + 2}px;
+                    left: ${Math.random() * 100}%;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    animation-duration: ${Math.random() * 20 + 15}s;
+                    animation-delay: ${Math.random() * 10}s;
+                `;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // 3D tilt effect on cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.querySelector('.tilt-inner').style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.tilt-inner').style.transform = 'rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Magnetic hover effect
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Split hero name into chars for wave animation
+        const heroName = document.getElementById('heroName');
+        if (heroName) {
+            const originalHTML = heroName.innerHTML;
+            const text = heroName.textContent;
+            heroName.innerHTML = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.animationDelay = `${i * 0.05}s`;
+                if (char === ' ') span.style.width = '0.3em';
+                heroName.appendChild(span);
+            });
+        }
+
+        // Split text reveal for headings
+        document.querySelectorAll('.split-reveal').forEach(el => {
+            const text = el.textContent;
+            el.innerHTML = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.transitionDelay = `${i * 0.03}s`;
+                el.appendChild(span);
+            });
+        });
+
+        // Swarm Cursor Effect
+        const swarmCanvas = document.getElementById('swarmCanvas');
+        const ctx = swarmCanvas.getContext('2d');
+        let mouseX = 0, mouseY = 0;
+        let particles = [];
+        const particleCount = 25;
+        const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981'];
+
+        function resizeCanvas() {
+            swarmCanvas.width = window.innerWidth;
+            swarmCanvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.x = 0;
+                this.y = 0;
+                this.targetX = 0;
+                this.targetY = 0;
+                this.size = Math.random() * 4 + 2;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.friction = Math.random() * 0.08 + 0.02;
+                this.ease = Math.random() * 0.1 + 0.05;
+                this.angle = Math.random() * Math.PI * 2;
+                this.velocity = 0;
+            }
+
+            update() {
+                this.targetX = mouseX + Math.cos(this.angle) * 30;
+                this.targetY = mouseY + Math.sin(this.angle) * 30;
+                this.x += (this.targetX - this.x) * this.ease;
+                this.y += (this.targetY - this.y) * this.ease;
+                this.angle += 0.02;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateSwarm() {
+            ctx.clearRect(0, 0, swarmCanvas.width, swarmCanvas.height);
+            particles.forEach((p, i) => {
+                p.ease = 0.02 + (i * 0.003);
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateSwarm);
+        }
+        animateSwarm();
+    </script>
+
+</body>
+</html>
