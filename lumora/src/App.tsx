@@ -21,6 +21,12 @@ export default function App() {
       >
         Skip to content
       </a>
+      {/* Small background animation — subtle volt orbs drifting */}
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -left-40 size-[520px] rounded-full bg-volt/[0.04] blur-[90px] animate-[drift_22s_ease-in-out_infinite]" />
+        <div className="absolute top-[45%] -right-48 size-[640px] rounded-full bg-volt/[0.03] blur-[100px] animate-[drift2_28s_ease-in-out_infinite]" />
+        <div className="absolute -bottom-40 left-[30%] size-[480px] rounded-full bg-white/[0.02] blur-[80px] animate-[drift_26s_ease-in-out_infinite_reverse]" />
+      </div>
       <Nav />
       <ScrollProgress />
       <main>

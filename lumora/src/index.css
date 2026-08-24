@@ -114,6 +114,17 @@ body {
   50% { opacity: 0.2; }
 }
 
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(28px, -18px) scale(1.04); }
+  66% { transform: translate(-18px, 14px) scale(0.96); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-22px, 12px) scale(1.06); }
+  66% { transform: translate(16px, -12px) scale(0.94); }
+}
+
 /* FAQ answer slide-in when opened */
 @keyframes faq-in {
   from {
@@ -152,5 +163,8 @@ details[open] .faq-body {
   .dot-grid {
     animation: none !important;
     opacity: 0.06 !important;
+  }
+  [class*="animate-[drift"] {
+    animation: none !important;
   }
 }
