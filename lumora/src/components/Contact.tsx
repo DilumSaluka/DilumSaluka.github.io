@@ -22,7 +22,7 @@ const SERVICE_OPTIONS = [
 ];
 
 const inputClasses =
-  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-volt/60 focus:outline-none focus:ring-2 focus:ring-volt/20";
+  "w-full rounded-xl border border-zinc-300 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 transition-colors focus:border-volt/60 focus:outline-none focus:ring-2 focus:ring-volt/20";
 
 export function Contact() {
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ export function Contact() {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    const text = `Hi Lumora Studio! I'm ${name || "..."}. I need: ${service}. ${message}`.trim();
+    const text = `Hi VYN Labs! I'm ${name || "..."}. I need: ${service}. ${message}`.trim();
     window.open(whatsappLink(text), "_blank", "noopener,noreferrer");
   };
 
@@ -50,7 +50,7 @@ export function Contact() {
           <ul className="mt-10 space-y-4">
             <li>
               <a
-                href={whatsappLink("Hi Lumora Studio!")}
+                href={whatsappLink("Hi VYN Labs!")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4"

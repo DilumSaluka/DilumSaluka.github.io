@@ -247,10 +247,10 @@ export function Work() {
     <section id="work" className="scroll-mt-24 py-24 sm:py-28">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <AnimatedHeading className="max-w-[22ch] font-display text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
+          <AnimatedHeading className="max-w-[22ch] font-display text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl lg:text-5xl">
             Work we're proud to show.
           </AnimatedHeading>
-          <p className="max-w-[42ch] text-sm leading-relaxed text-zinc-500">
+          <p className="max-w-[42ch] text-sm leading-relaxed text-zinc-600 dark:text-zinc-500">
             Every piece below is a concept project — not commissioned work.
             Yours could be next in this row.
           </p>
@@ -263,14 +263,14 @@ export function Work() {
                 key={key}
                 className="group w-[260px] shrink-0 snap-start sm:w-[300px]"
               >
-                <div className="overflow-hidden rounded-2xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1">
+                <div className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 shadow-[0_8px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-translate-y-1">
                   <div className="aspect-[4/5] w-full bg-zinc-900">{MINIS[key]}</div>
                 </div>
                 <div className="mt-4 flex items-baseline justify-between gap-3 px-1">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-zinc-100 transition-colors duration-300 group-hover:text-volt">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 transition-colors duration-300 group-hover:text-volt">
                     {key}
                   </h3>
-                  <p className="shrink-0 text-xs uppercase tracking-[0.16em] text-zinc-500">
+                  <p className="shrink-0 text-xs uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-500">
                     {SITE_LABELS[key]}
                   </p>
                 </div>

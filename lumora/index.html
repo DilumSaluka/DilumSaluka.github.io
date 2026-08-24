@@ -8,8 +8,20 @@
       name="description"
       content="VYN Labs designs modern websites, AI video content, chatbots, automation, logos, posters and digital marketing that make your business stand out online."
     />
-    <meta name="theme-color" content="#0b0b0e" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)" />
     <meta property="og:title" content="VYN Labs" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("vyn-theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = stored || (prefersDark ? "dark" : "light");
+          if (theme === "dark") document.documentElement.classList.add("dark");
+          else document.documentElement.classList.remove("dark");
+        } catch (e) {}
+      })();
+    </script>
     <meta
       property="og:description"
       content="Modern websites, AI content, chatbots and digital marketing — one studio, start to finish."
