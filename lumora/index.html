@@ -10,13 +10,9 @@
     />
     <meta name="theme-color" content="#0b0b0e" />
     <meta property="og:title" content="VYN Labs" />
-    <script>
-      (function () {
-        try {
-          document.documentElement.classList.add("dark");
-        } catch (e) {}
-      })();
-    </script>
+    <!-- Security: checklist items applicable to a static site (GitHub Pages cannot set HTTP headers) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://picsum.photos https://fast.picsum.photos https://images.unsplash.com data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       property="og:description"
       content="Modern websites, AI content, chatbots and digital marketing — one studio, start to finish."
