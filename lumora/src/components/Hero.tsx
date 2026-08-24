@@ -90,7 +90,7 @@ export function Hero() {
             className="absolute left-0 top-6 w-[68%] rotate-[-4deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[-2deg]"
           >
             <img
-              src="https://images.unsplash.com/photo-1499951360447-b19be2c0e1a8?w=720&h=900&fit=crop&q=80&auto=format"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=720&h=900&fit=crop&q=80&auto=format"
               alt="Modern website displayed on a laptop in a bright studio workspace"
               width={720}
               height={900}

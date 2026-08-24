@@ -1,5 +1,5 @@
-import { ArrowRight, CalendarCheck, Check, Clock, ShieldCheck } from "@phosphor-icons/react";
-import { ADD_ONS, COMING_SOON, PACKAGES, whatsappLink } from "../data";
+import { ArrowRight, CalendarCheck, Check, ShieldCheck } from "@phosphor-icons/react";
+import { OTHER_PRICING, PACKAGES, whatsappLink } from "../data";
 import { AnimatedHeading } from "./AnimatedHeading";
 import { Reveal } from "./Reveal";
 
@@ -26,15 +26,17 @@ export function Pricing() {
           </p>
         </Reveal>
 
-        {/* Part A — website packages */}
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        {/* Website packages — 3 tiers: Making, Modernising, Custom */}
+        <div className="mt-14 grid gap-4 md:grid-cols-3">
           {PACKAGES.map((plan, i) => (
             <Reveal key={plan.name} delay={i * 0.07} className="h-full">
               <article
                 className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 sm:p-8 ${
                   plan.popular
                     ? "border-volt/50 bg-gradient-to-b from-volt/12 to-transparent shadow-[0_20px_60px_rgba(200,241,105,0.08)]"
-                    : "border-white/10 bg-panel hover:border-white/20"
+                    : plan.price === "Custom"
+                      ? "border-white/10 bg-white/[0.02] hover:border-volt/30"
+                      : "border-white/10 bg-panel hover:border-white/20"
                 }`}
               >
                 {plan.popular && (
@@ -47,19 +49,25 @@ export function Pricing() {
                 </h3>
                 <p className="mt-1 text-sm text-zinc-500">{plan.blurb}</p>
 
-                <p className="mt-6 flex items-center gap-2.5">
-                  <span className="text-sm text-zinc-500 line-through decoration-zinc-600">
-                    {plan.marketRate}
-                  </span>
-                  <span className="text-xs font-semibold uppercase tracking-wide text-volt">
-                    launch price
-                  </span>
-                </p>
+                {plan.marketRate ? (
+                  <p className="mt-6 flex items-center gap-2.5">
+                    <span className="text-sm text-zinc-500 line-through decoration-zinc-600">
+                      {plan.marketRate}
+                    </span>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-volt">
+                      launch price
+                    </span>
+                  </p>
+                ) : (
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-zinc-500">Tailored quote</p>
+                )}
                 <p className="mt-1.5 font-display text-4xl font-semibold tracking-tight text-zinc-50">
                   {plan.price}
-                  <span className="ml-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
-                    {plan.unit}
-                  </span>
+                  {plan.price !== "Custom" && (
+                    <span className="ml-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                      {plan.unit}
+                    </span>
+                  )}
                 </p>
                 <p className="mt-1.5 text-sm text-zinc-400">{plan.recurring}</p>
 
@@ -81,10 +89,12 @@ export function Pricing() {
                   className={`btn-shine group mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 active:translate-y-px active:scale-[0.98] ${
                     plan.popular
                       ? "bg-volt text-ink hover:-translate-y-px hover:shadow-[0_8px_30px_rgba(200,241,105,0.25)]"
-                      : "border border-white/15 text-zinc-100 hover:border-volt/50 hover:text-volt"
+                      : plan.price === "Custom"
+                        ? "border border-white/15 text-zinc-100 hover:border-volt/50 hover:text-volt"
+                        : "border border-white/15 text-zinc-100 hover:border-volt/50 hover:text-volt"
                   }`}
                 >
-                  Start a project
+                  {plan.price === "Custom" ? "Discuss your project" : "Start a project"}
                   <ArrowRight
                     size={16}
                     weight="bold"
@@ -104,76 +114,98 @@ export function Pricing() {
           </p>
         </Reveal>
 
-        {/* Part B — add-ons */}
-        <Reveal className="mt-16">
-          <h3 className="font-display text-2xl font-semibold tracking-tight text-zinc-50">
-            Add-on services
-          </h3>
-          <p className="mt-2 max-w-[55ch] text-sm leading-relaxed text-zinc-500">
-            À la carte — mix these into any package or take them on their own.
-          </p>
-        </Reveal>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {ADD_ONS.map((addon, i) => (
-            <Reveal key={addon.name} delay={(i % 3) * 0.06} className="h-full">
-              <article className="flex h-full flex-col rounded-2xl border border-white/10 bg-panel p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-volt/30">
-                <h4 className="font-display text-base font-semibold tracking-tight text-zinc-100">
-                  {addon.name}
-                </h4>
-                <p className="mt-2.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                  {addon.marketRate && (
-                    <span className="text-xs text-zinc-500 line-through decoration-zinc-600">
-                      {addon.marketRate}
-                    </span>
-                  )}
-                  <span className="font-display text-xl font-semibold tracking-tight text-volt">
-                    {addon.price}
-                  </span>
-                </p>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{addon.note}</p>
-              </article>
-            </Reveal>
+        {/* Other services — every service gets 2 money + 1 custom */}
+        <div className="mt-16 space-y-12">
+          {OTHER_PRICING.map((group) => (
+            <div key={group.category}>
+              <Reveal>
+                <h3 className="font-display text-xl font-semibold tracking-tight text-zinc-50 sm:text-2xl">
+                  {group.category}
+                </h3>
+              </Reveal>
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {group.packs.map((pack, j) => (
+                  <Reveal key={pack.name} delay={(j % 3) * 0.06} className="h-full">
+                    <article
+                      className={`flex h-full flex-col rounded-2xl border p-6 transition-all duration-500 hover:-translate-y-1 ${
+                        pack.popular
+                          ? "border-volt/40 bg-volt/[0.06]"
+                          : pack.price === "Custom" || pack.price.startsWith("Custom") || pack.price.startsWith("From Custom")
+                            ? "border-white/10 bg-white/[0.02] hover:border-volt/30"
+                            : "border-white/10 bg-panel hover:border-volt/30"
+                      }`}
+                    >
+                      {pack.popular && (
+                        <span className="mb-3 inline-flex w-fit rounded-full bg-volt px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
+                          Most popular
+                        </span>
+                      )}
+                      <h4 className="font-display text-base font-semibold tracking-tight text-zinc-100">
+                        {pack.name}
+                      </h4>
+                      <p className="mt-1 text-xs text-zinc-500">{pack.blurb}</p>
+                      {pack.marketRate ? (
+                        <p className="mt-3 flex items-center gap-2">
+                          <span className="text-xs text-zinc-500 line-through decoration-zinc-600">
+                            {pack.marketRate}
+                          </span>
+                          <span className="text-[10px] font-semibold uppercase tracking-wide text-volt">launch</span>
+                        </p>
+                      ) : (
+                        pack.price !== "Custom" && !pack.price.startsWith("Custom") && <p className="mt-3 text-[10px] font-semibold uppercase tracking-wide text-zinc-500">launch price</p>
+                      )}
+                      <p className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-50">
+                        {pack.price}
+                        {pack.price !== "Custom" && !pack.price.startsWith("Custom") && !pack.price.startsWith("From") && (
+                          <span className="ml-1.5 text-xs font-medium text-zinc-500">{pack.unit}</span>
+                        )}
+                      </p>
+                      <p className="text-xs text-zinc-500">{pack.recurring}</p>
+                      <ul className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                        {pack.features.map((f) => (
+                          <li key={f} className="flex items-start gap-2 text-xs text-zinc-300">
+                            <Check size={12} weight="bold" className="mt-0.5 shrink-0 text-volt" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href={whatsappLink(`Hi VYN Labs! I'm interested in ${group.category} — ${pack.name}.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`mt-5 inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2.5 text-xs font-semibold transition-all duration-300 active:scale-95 ${
+                          pack.popular
+                            ? "bg-volt text-ink hover:shadow-[0_6px_20px_rgba(200,241,105,0.2)]"
+                            : "border border-white/15 text-zinc-300 hover:border-volt/50 hover:text-volt"
+                        }`}
+                      >
+                        {pack.price === "Custom" || pack.price.startsWith("Custom") ? "Customised plan" : "Choose plan"}
+                        <ArrowRight size={12} weight="bold" />
+                      </a>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
+        </div>
 
-          {/* Fills the 6th cell of the 3-col grid */}
-          <Reveal delay={0.12} className="h-full">
-            <a
-              href="#estimator"
-              className="group flex h-full flex-col justify-between rounded-2xl border border-dashed border-volt/30 bg-volt/[0.04] p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-volt/60"
-            >
+        {/* Estimator CTA */}
+        <Reveal className="mt-12">
+          <a
+            href="#estimator"
+            className="group flex items-center justify-between rounded-2xl border border-dashed border-volt/30 bg-volt/[0.04] p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-volt/60"
+          >
+            <div>
               <p className="font-display text-base font-semibold tracking-tight text-zinc-100">
                 Not sure what it costs?
               </p>
-              <p className="mt-2 flex items-center gap-2 text-sm font-medium text-volt">
-                Build your own estimate
-                <ArrowRight size={15} weight="bold" className="transition-transform duration-300 group-hover:translate-x-1" />
-              </p>
-            </a>
-          </Reveal>
-        </div>
-
-        {/* Part C — coming soon */}
-        <Reveal className="mt-14">
-          <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.02] p-6 sm:p-7">
-            <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-zinc-500">
-              <Clock size={15} />
-              Coming soon
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2.5">
-              {COMING_SOON.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-500"
-                >
-                  {item}
-                </span>
-              ))}
+              <p className="mt-1 text-sm text-zinc-500">Build your own estimate in 30 seconds.</p>
             </div>
-            <p className="mt-4 max-w-[60ch] text-xs leading-relaxed text-zinc-600">
-              We only launch services we've tested ourselves — these open up
-              once our first pilot clients are through them.
-            </p>
-          </div>
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-volt">
+              Open estimator <ArrowRight size={15} weight="bold" className="transition-transform group-hover:translate-x-1" />
+            </span>
+          </a>
         </Reveal>
       </div>
     </section>
