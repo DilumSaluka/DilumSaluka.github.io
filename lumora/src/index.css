@@ -102,6 +102,18 @@ body {
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
 }
 
+/* DotGrid — React Bits style, volt dots matching VYN branding */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(200, 241, 105, 0.32) 1.1px, transparent 1.1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse at center, black 42%, transparent 75%);
+  animation: dotPulse 7s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.11; }
+  50% { opacity: 0.2; }
+}
+
 /* FAQ answer slide-in when opened */
 @keyframes faq-in {
   from {
@@ -136,5 +148,9 @@ details[open] .faq-body {
     color: var(--color-volt) !important;
     -webkit-background-clip: initial !important;
     background-clip: initial !important;
+  }
+  .dot-grid {
+    animation: none !important;
+    opacity: 0.06 !important;
   }
 }

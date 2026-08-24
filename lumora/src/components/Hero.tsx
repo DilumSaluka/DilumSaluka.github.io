@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, ArrowRight } from "@phosphor-icons/react";
+import { DecryptedText, DotGrid } from "./ReactBits";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -23,8 +24,9 @@ export function Hero() {
 
   return (
     <section id="top" ref={sectionRef} className="relative overflow-hidden">
-      {/* Grid pattern — Aceternity style */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
+      {/* React Bits — DotGrid + Grid (volt dots matching V branding) */}
+      <DotGrid />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 grid-pattern opacity-30" />
       {/* Ambient glow, tinted to accent — no purple */}
       <div
         aria-hidden="true"
@@ -39,7 +41,7 @@ export function Hero() {
             {...enter(0)}
             className="font-display text-xs font-medium uppercase tracking-[0.22em] text-zinc-500"
           >
-            Web design — AI content — Automation
+            <DecryptedText text="Web design — AI content — Automation" speed={28} />
           </motion.p>
           <motion.h1
             {...enter(0.08)}

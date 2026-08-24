@@ -17,8 +17,8 @@ export function AnimatedHeading({
   return (
     <motion.h2
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduce ? false : { opacity: 0, y: 26, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
     >
