@@ -17,7 +17,7 @@ function Row({ hidden }: { hidden?: boolean }) {
 
 export function Ticker() {
   return (
-    <div className="overflow-hidden border-y border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-panel/60 py-4">
+    <div className="overflow-hidden border-y border-white/5 bg-panel/60 py-4">
       <div className="marquee-track flex w-max animate-marquee hover:[animation-play-state:paused]">
         <Row />
         <Row hidden />

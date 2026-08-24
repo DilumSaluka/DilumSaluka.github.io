@@ -37,10 +37,10 @@ export function Estimator() {
     <section id="estimator" className="scroll-mt-24 py-24 sm:py-28">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <Reveal>
-          <AnimatedHeading className="max-w-[24ch] font-display text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl lg:text-5xl">
+          <AnimatedHeading className="max-w-[24ch] font-display text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
             Price it yourself in 30 seconds.
           </AnimatedHeading>
-          <p className="mt-4 max-w-[55ch] text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 max-w-[55ch] text-lg leading-relaxed text-zinc-400">
             Tick what you need and watch the estimate update live. No email
             required — take the numbers straight to WhatsApp.
           </p>

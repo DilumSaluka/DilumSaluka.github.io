@@ -39,13 +39,13 @@ export function Hero() {
         <div>
           <motion.p
             {...enter(0)}
-            className="font-display text-xs font-medium uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-500"
+            className="font-display text-xs font-medium uppercase tracking-[0.22em] text-zinc-500"
           >
             <DecryptedText text="Web design — AI content — Automation" speed={28} />
           </motion.p>
           <motion.h1
             {...enter(0.08)}
-            className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl lg:text-6xl"
+            className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl"
           >
             We make small businesses look{" "}
             <em className="shiny-volt pb-1 leading-[1.1] not-italic">
@@ -55,7 +55,7 @@ export function Hero() {
           </motion.h1>
           <motion.p
             {...enter(0.16)}
-            className="mt-6 max-w-[52ch] text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
+            className="mt-6 max-w-[52ch] text-lg leading-relaxed text-zinc-400"
           >
             Modern websites, AI videos, logos and digital marketing — one
             studio handles it all, start to finish.
@@ -74,7 +74,7 @@ export function Hero() {
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-white/15 bg-white dark:bg-transparent px-6 py-3.5 text-sm font-semibold text-zinc-700 dark:text-zinc-100 transition-all duration-300 hover:-translate-y-px hover:border-volt/50 hover:text-volt active:translate-y-px active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-zinc-100 transition-all duration-300 hover:-translate-y-px hover:border-volt/50 hover:text-volt active:translate-y-px active:scale-[0.98]"
             >
               Explore services
               <ArrowDown size={16} weight="bold" />
@@ -91,7 +91,7 @@ export function Hero() {
         >
           <motion.figure
             style={reduce ? undefined : { y: yBack }}
-            className="absolute left-0 top-6 w-[68%] rotate-[-4deg] overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[-2deg]"
+            className="absolute left-0 top-6 w-[68%] rotate-[-4deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[-2deg]"
           >
             <img
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=720&h=900&fit=crop&q=80&auto=format"
@@ -105,7 +105,7 @@ export function Hero() {
           </motion.figure>
           <motion.figure
             style={reduce ? undefined : { y: yFront }}
-            className="absolute bottom-0 right-0 w-[58%] rotate-[3deg] overflow-hidden rounded-2xl border border-volt/30 shadow-[0_24px_60px_rgba(0,0,0,0.12)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[1.5deg]"
+            className="absolute bottom-0 right-0 w-[58%] rotate-[3deg] overflow-hidden rounded-2xl border border-volt/30 shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[1.5deg]"
           >
             <img
               src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=680&h=850&fit=crop&q=80&auto=format"

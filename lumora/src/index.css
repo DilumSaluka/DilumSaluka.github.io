@@ -22,10 +22,6 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
-}
-html.dark {
-  color-scheme: dark;
 }
 
 html, body, * {
@@ -43,15 +39,10 @@ input, textarea {
 }
 
 body {
-  background-color: #fcfcfd;
-  color: #18181b;
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-.dark body {
   background-color: var(--color-ink);
   color: #e6e6ea;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {

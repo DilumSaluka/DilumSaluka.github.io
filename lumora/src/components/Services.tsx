@@ -16,10 +16,10 @@ function Cell({ service, delay }: { service: Service; delay: number }) {
 
   const tone =
     service.tone === "volt"
-      ? "border-volt/30 dark:border-volt/25 bg-volt/10 dark:bg-gradient-to-br dark:from-volt/12 dark:to-transparent"
+      ? "border-volt/25 bg-gradient-to-br from-volt/12 to-transparent"
       : service.tone === "soft"
-        ? "border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.04]"
-        : "border-zinc-200 dark:border-white/10 bg-white dark:bg-panel";
+        ? "border-white/10 bg-white/[0.04]"
+        : "border-white/10 bg-panel";
 
   // Cursor spotlight: a soft volt glow follows the pointer across the card
   const mx = useMotionValue(0);
@@ -60,13 +60,13 @@ function Cell({ service, delay }: { service: Service; delay: number }) {
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
         <div className="relative z-10 flex h-full flex-col">
-          <span className="grid size-11 place-items-center rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-100 dark:bg-white/5 text-volt transition-all duration-500 group-hover:rotate-[8deg] group-hover:scale-110 group-hover:border-volt/40">
+          <span className="grid size-11 place-items-center rounded-xl border border-white/10 bg-white/5 text-volt transition-all duration-500 group-hover:rotate-[8deg] group-hover:scale-110 group-hover:border-volt/40">
             <Icon size={22} />
           </span>
-          <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 transition-colors duration-300 group-hover:text-volt">
+          <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-zinc-50 transition-colors duration-300 group-hover:text-volt">
             {service.title}
           </h3>
-          <p className="mt-2 max-w-[48ch] text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 max-w-[48ch] text-sm leading-relaxed text-zinc-400">
             {service.description}
           </p>
           {service.chips && (
@@ -74,7 +74,7 @@ function Cell({ service, delay }: { service: Service; delay: number }) {
               {service.chips.map((chip) => (
                 <span
                   key={chip}
-                  className="rounded-full border border-zinc-300 dark:border-white/15 px-3 py-1 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors duration-300 group-hover:border-volt/30"
+                  className="rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-zinc-300 transition-colors duration-300 group-hover:border-volt/30"
                 >
                   {chip}
                 </span>
@@ -93,11 +93,11 @@ export function Services() {
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
         <Reveal>
           <AnimatedHeading
-            className="max-w-[26ch] font-display text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl lg:text-5xl"
+            className="max-w-[26ch] font-display text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl"
           >
             One studio. Every service your brand needs.
           </AnimatedHeading>
-          <p className="mt-4 max-w-[58ch] text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mt-4 max-w-[58ch] text-lg leading-relaxed text-zinc-400">
             From your first logo to monthly marketing — everything works
             together because one team makes it all.
           </p>

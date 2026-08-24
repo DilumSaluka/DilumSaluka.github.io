@@ -22,7 +22,7 @@ const SERVICE_OPTIONS = [
 ];
 
 const inputClasses =
-  "w-full rounded-xl border border-zinc-300 dark:border-white/10 bg-white dark:bg-white/[0.03] px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 transition-colors focus:border-volt/60 focus:outline-none focus:ring-2 focus:ring-volt/20";
+  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-volt/60 focus:outline-none focus:ring-2 focus:ring-volt/20";
 
 export function Contact() {
   const [name, setName] = useState("");
