@@ -24,7 +24,7 @@ const KNOWLEDGE: { keys: string[]; reply: string }[] = [
   {
     keys: ["cost", "price", "much", "rate", "budget", "lkr", "rs", "cheap"],
     reply:
-      "Launch pricing right now: websites from LKR 5,000 (+ LKR 1,000/month hosting & care). Add-ons — logos LKR 7,000, posters LKR 4,000, CVs LKR 3,000. Try the estimator on this page for an instant total!",
+      "Launch pricing right now: websites from LKR 5,000 (+ LKR 1,000/month hosting & care). Logos from LKR 1,000, posters from LKR 500, CVs from LKR 500, AI videos from LKR 1,000 (3-pack LKR 8,000), chatbots from LKR 3,000. Try the estimator on this page for an instant total!",
   },
   {
     keys: ["long", "time", "take", "fast", "when", "deadline"],

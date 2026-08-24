@@ -276,7 +276,7 @@ export const OTHER_PRICING: { category: string; packs: Package[] }[] = [
         name: "Basic Logo",
         blurb: "One strong mark.",
         marketRate: "LKR 8,000",
-        price: "LKR 5,000",
+        price: "LKR 1,000",
         unit: "one-time",
         recurring: "1 concept + 2 revisions",
         features: ["Single logo concept", "PNG + JPG + SVG", "Black & white versions", "Free minor tweaks"],
@@ -285,7 +285,7 @@ export const OTHER_PRICING: { category: string; packs: Package[] }[] = [
         name: "Brand Kit",
         blurb: "Most chosen.",
         marketRate: "LKR 15,000",
-        price: "LKR 7,000",
+        price: "LKR 3,000",
         unit: "one-time",
         recurring: "Logo + kit",
         popular: true,
@@ -304,16 +304,16 @@ export const OTHER_PRICING: { category: string; packs: Package[] }[] = [
   {
     category: "Posters / Flyers",
     packs: [
-      { name: "Single", blurb: "One standout piece.", marketRate: "LKR 8,000", price: "LKR 4,000", unit: "per piece", recurring: "Print-ready", features: ["1 poster / flyer", "2 revisions", "Print + web files", "Fast delivery"] },
-      { name: "Pack of 5", blurb: "Campaign ready.", marketRate: "LKR 35,000", price: "LKR 15,000", unit: "per pack", recurring: "Save 25%", popular: true, features: ["5 coordinated designs", "Consistent style", "All source files", "Priority support"] },
+      { name: "Single", blurb: "One standout piece.", marketRate: "LKR 8,000", price: "LKR 500", unit: "per piece", recurring: "Print-ready", features: ["1 poster / flyer", "2 revisions", "Print + web files", "Fast delivery"] },
+      { name: "Pack of 5", blurb: "Campaign ready.", marketRate: "LKR 35,000", price: "LKR 3,000", unit: "per pack", recurring: "Save more per piece", popular: true, features: ["5 coordinated designs", "Consistent style", "All source files", "Priority support"] },
       { name: "Custom Campaign", blurb: "Any volume.", price: "Custom", unit: "tailored quote", recurring: "Events & launches", features: ["Unlimited pieces", "Custom illustrations", "Rush available", "Ongoing tweaks"] },
     ],
   },
   {
     category: "CV Design",
     packs: [
-      { name: "Starter CV", blurb: "Clean & hired.", marketRate: "LKR 4,000", price: "LKR 2,000", unit: "one-time", recurring: "1 page", features: ["Single-page CV", "ATS-friendly layout", "PDF + Word", "1 revision"] },
-      { name: "Pro Portfolio", blurb: "Most chosen.", marketRate: "LKR 6,000", price: "LKR 3,000", unit: "one-time", recurring: "CV + letter", popular: true, features: ["CV + cover letter", "LinkedIn banner", "2 revisions", "Print & digital"] },
+      { name: "Starter CV", blurb: "Clean & hired.", marketRate: "LKR 4,000", price: "LKR 500", unit: "one-time", recurring: "1 page", features: ["Single-page CV", "ATS-friendly layout", "PDF + Word", "1 revision"] },
+      { name: "Pro Portfolio", blurb: "Most chosen.", marketRate: "LKR 6,000", price: "LKR 1,000", unit: "one-time", recurring: "CV + letter", popular: true, features: ["CV + cover letter", "LinkedIn banner", "2 revisions", "Print & digital"] },
       { name: "Executive", blurb: "Fully tailored.", price: "Custom", unit: "tailored quote", recurring: "For leaders", features: ["Multi-page portfolio", "Personal logo", "Custom infographics", "Unlimited revisions"] },
     ],
   },
@@ -344,16 +344,16 @@ export const OTHER_PRICING: { category: string; packs: Package[] }[] = [
   {
     category: "AI Video",
     packs: [
-      { name: "Single Video", blurb: "One scroll-stopper.", marketRate: "LKR 8,000", price: "LKR 5,000", unit: "per video", recurring: "15–30s", features: ["Script + AI generation", "Music + captions", "2 revisions", "Ready for social"] },
-      { name: "Pack of 3", blurb: "Campaign.", marketRate: "LKR 20,000", price: "LKR 12,000", unit: "per pack", recurring: "Save 20%", popular: true, features: ["3 coordinated videos", "Consistent style", "All formats", "Priority edit"] },
+      { name: "Single Video", blurb: "One scroll-stopper.", marketRate: "LKR 8,000", price: "LKR 1,000", unit: "per video", recurring: "15–30s", features: ["Script + AI generation", "Music + captions", "2 revisions", "Ready for social"] },
+      { name: "Pack of 3", blurb: "Launch discount.", marketRate: "LKR 10,000", price: "LKR 8,000", unit: "per pack", recurring: "3 videos, one style", popular: true, features: ["3 coordinated videos", "Consistent style", "All formats", "Priority edit"] },
       { name: "Custom Studio", blurb: "Series & ads.", price: "Custom", unit: "tailored quote", recurring: "Ongoing", features: ["Unlimited videos", "Voice + avatar", "Ad variants", "Monthly retainer"] },
     ],
   },
   {
     category: "Chatbots & Automation",
     packs: [
-      { name: "Basic Bot", blurb: "Answer 24/7.", price: "From LKR 15,000", unit: "setup", recurring: "+ usage", features: ["FAQ bot for site/WhatsApp", "24/7 answers", "Lead capture", "2 weeks tuning"] },
-      { name: "Pro Automation", blurb: "Do work for you.", marketRate: "LKR 45,000", price: "From LKR 30,000", unit: "setup", recurring: "Most chosen", popular: true, features: ["Multi-step workflows", "Sheets / CRM sync", "Human handoff", "1 month support"] },
+      { name: "Basic Bot", blurb: "Answer 24/7.", marketRate: "LKR 15,000", price: "LKR 3,000", unit: "setup", recurring: "+ usage", features: ["FAQ bot for site/WhatsApp", "24/7 answers", "Lead capture", "2 weeks tuning"] },
+      { name: "Pro Automation", blurb: "Do work for you.", marketRate: "LKR 45,000", price: "LKR 10,000", unit: "setup", recurring: "Most chosen", popular: true, features: ["Multi-step workflows", "Sheets / CRM sync", "Human handoff", "1 month support"] },
       { name: "Custom AI", blurb: "Your AI team.", price: "Custom", unit: "tailored quote", recurring: "Complex ops", features: ["LLM + tools", "API ecosystem", "Analytics dashboard", "Ongoing optimisation"] },
     ],
   },
@@ -372,14 +372,14 @@ export type EstimateItem = {
 // TODO: tune these to your real rates before launch
 export const ESTIMATOR_ITEMS: EstimateItem[] = [
   { id: "website", label: "Website", note: "1–3 pages · +LKR 1,000/mo care", min: 5000, max: 7000 },
-  { id: "logo", label: "Logo design", note: "logo + brand kit", min: 5000, max: 7000 },
-  { id: "posters", label: "Poster / flyer", note: "per piece", min: 4000, max: 4000 },
-  { id: "cv", label: "CV design", note: "CV + cover letter", min: 2000, max: 3000 },
+  { id: "logo", label: "Logo design", note: "logo or brand kit", min: 1000, max: 3000 },
+  { id: "posters", label: "Poster / flyer", note: "piece or pack", min: 500, max: 3000 },
+  { id: "cv", label: "CV design", note: "CV + cover letter", min: 500, max: 1000 },
   { id: "software", label: "Custom software", note: "tools & integrations", min: 15000, max: 45000 },
   { id: "domain", label: "Domain (.com.lk / .com)", note: "per year, billed at cost", min: 1000, max: 8000 },
   { id: "social", label: "Social media", note: "per month", min: 12000, max: 25000 },
-  { id: "aivideo", label: "AI video", note: "per video", min: 5000, max: 12000 },
-  { id: "chatbot", label: "Chatbot / automation", note: "setup", min: 15000, max: 30000 },
+  { id: "aivideo", label: "AI video", note: "single or pack", min: 1000, max: 8000 },
+  { id: "chatbot", label: "Chatbot / automation", note: "setup", min: 3000, max: 10000 },
 ];
 
 export const FAQS = [
