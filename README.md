@@ -1,4 +1,4 @@
-# Dilum Saluka - Portfolio
+# Dilum Saluka - Portfolio & Projects
 
 Personal portfolio website showcasing my journey in Ethical Hacking & Cyber Security.
 
@@ -18,6 +18,16 @@ BSc Ethical Hacking & Network Security student at NIBM (Coventry University coll
 
 - **VibeNav** - Android navigation app using Swipeable Tab Layout
 - **Sweep-Helper** - Windows system cleanup tool built with C# .NET
+- **VYN Labs** - Modern digital studio website (Web Design, AI Content & Automation) — live at [dilumsaluka.github.io/vyn-labs](https://dilumsaluka.github.io/vyn-labs/)
+
+## VYN Labs — Digital Studio
+
+Modern dark studio site for a Sri Lankan partner business. Includes launch pricing (LKR 5,000 / LKR 7,000 + care), add-ons, interactive estimator, mini-site previews, and VYN Assistant chatbot.
+
+- **Live:** https://dilumsaluka.github.io/vyn-labs/
+- **Source:** `lumora/` (Vite + React + TypeScript + Tailwind v4 + Motion)
+- **Stack:** Vite, React 19, TypeScript, Tailwind CSS v4, Motion, Phosphor Icons
+- **Build:** `cd lumora && npm install && npm run build`
 
 ## Tech Stack
 
@@ -25,12 +35,14 @@ BSc Ethical Hacking & Network Security student at NIBM (Coventry University coll
 - Tailwind CSS
 - Vanilla JavaScript
 - Font Awesome Icons
+- Vite + React + TypeScript (for VYN Labs)
 
 ## Connect
 
 - [LinkedIn](https://www.linkedin.com/in/dilum-saluka-641a71384/)
 - [GitHub](https://github.com/DilumSaluka)
+- Email: dilumsaluka965@gmail.com
 
-## License
+## License & Copyright
 
-© 2026 Dilum Saluka. All rights reserved.
+© 2026 Dilum Saluka & VYN Labs. All rights reserved.
