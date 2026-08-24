@@ -104,7 +104,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? undefined : { opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-[92px] right-4 z-50 flex max-h-[min(560px,72dvh)] w-[min(92vw,370px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-[0_24px_70px_rgba(0,0,0,0.55)] sm:right-6"
+            className="fixed bottom-[144px] right-4 z-50 flex max-h-[min(540px,68dvh)] w-[min(92vw,370px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-panel shadow-[0_24px_70px_rgba(0,0,0,0.55)] sm:right-6"
           >
             <header className="flex items-center gap-3 border-b border-white/10 px-4 py-3.5">
               <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-volt text-ink">

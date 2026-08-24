@@ -37,16 +37,27 @@ function MiniCafe() {
         <p className="mt-2 font-display text-[10px] font-bold leading-none tracking-tight">Good coffee,<br />good people.</p>
         <div className="mt-2 grid grid-cols-3 gap-1">
           {[
-            ["Espresso", "kandy-espresso"],
-            ["Latte", "kandy-latte"],
-            ["Filter", "kandy-filter"],
-          ].map(([n, seed]) => (
+            ["Espresso", "kandy-espresso", "photo-1510707577719-ae7c14805e3a"],
+            ["Latte", "kandy-latte", "photo-1561047029-3000c68339ca"],
+            ["Filter", "kandy-filter", "photo-1447933601403-0c6688de566e"],
+          ].map(([n, , id]) => (
             <div key={n} className="rounded-md bg-white p-1.5 shadow-sm">
-              <img src={`https://picsum.photos/seed/${seed}/120/80`} alt="" width={120} height={80} loading="lazy" className="h-6 w-full rounded object-cover" />
+              <img
+                src={`https://images.unsplash.com/${id}?w=160&h=100&fit=crop&q=70&auto=format`}
+                alt=""
+                width={160}
+                height={100}
+                loading="lazy"
+                className="h-9 w-full rounded object-cover"
+              />
               <p className="mt-1 text-[4px] font-bold">{n}</p>
               <p className="text-[3px] text-zinc-500">Rs. 650</p>
             </div>
           ))}
+        </div>
+        <div className="mt-2 flex items-center gap-1.5 rounded-md bg-amber-100 p-1.5">
+          <span className="text-[6px]">☕</span>
+          <p className="text-[4px] font-semibold text-amber-900">Today's special — Ceylon spice latte Rs. 550</p>
         </div>
         <div className="mt-auto flex items-center justify-between rounded-md bg-zinc-900 px-2 py-1 text-[4px] text-zinc-300">
           <span>Open 7AM — 9PM</span>
@@ -86,7 +97,14 @@ function MiniFitness() {
             </div>
           ))}
         </div>
-        <img src="https://picsum.photos/seed/urban-gym/260/50" alt="" width={260} height={50} loading="lazy" className="mt-2 h-7 w-full rounded object-cover" />
+        <img
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=320&h=110&fit=crop&q=70&auto=format"
+          alt=""
+          width={320}
+          height={110}
+          loading="lazy"
+          className="mt-auto h-10 w-full rounded object-cover"
+        />
       </div>
     </BrowserChrome>
   );
@@ -110,19 +128,30 @@ function MiniRealty() {
         </div>
         <div className="mt-2 grid grid-cols-2 gap-1">
           {[
-            ["Rs. 42M", "Kandy Hills · 4bd", "skyline-kandy1"],
-            ["Rs. 28M", "Colombo 07 · 3bd", "skyline-colombo"],
-            ["Rs. 19M", "Galle · 2bd", "skyline-galle"],
-            ["Rs. 55M", "Negombo · 5bd", "skyline-negombo"],
-          ].map(([price, place, seed]) => (
+            ["Rs. 42M", "Kandy Hills · 4bd", "photo-1568605114967-8130f3a36994"],
+            ["Rs. 28M", "Colombo 07 · 3bd", "photo-1570129477492-45c003edd2be"],
+            ["Rs. 19M", "Galle · 2bd", "photo-1564013799919-ab600027ffc6"],
+            ["Rs. 55M", "Negombo · 5bd", "photo-1512917774080-9991f1c4c750"],
+          ].map(([price, place, id]) => (
             <div key={place} className="overflow-hidden rounded-md border border-zinc-100">
-              <img src={`https://picsum.photos/seed/${seed}/200/90`} alt="" width={200} height={90} loading="lazy" className="h-7 w-full object-cover" />
+              <img
+                src={`https://images.unsplash.com/${id}?w=200&h=110&fit=crop&q=70&auto=format`}
+                alt=""
+                width={200}
+                height={110}
+                loading="lazy"
+                className="h-11 w-full object-cover"
+              />
               <div className="p-1">
                 <p className="text-[4px] font-bold">{price}</p>
                 <p className="text-[3px] text-zinc-500">{place}</p>
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-auto flex items-center justify-between rounded-md bg-zinc-900 px-2 py-1 text-[4px] text-white">
+          <span>1,200+ properties</span>
+          <span className="rounded-full bg-[#c8f169] px-1.5 py-0.5 font-bold text-black">List yours</span>
         </div>
       </div>
     </BrowserChrome>
@@ -140,15 +169,33 @@ function MiniSkincare() {
         <p className="mt-2 font-display text-[9px] font-semibold leading-none">Skin that<br /><span className="font-normal italic">feels like you.</span></p>
         <div className="mt-2 flex gap-1">
           <div className="flex-1 rounded-md bg-white p-1.5 text-center shadow-sm">
-            <img src="https://picsum.photos/seed/bloom-serum/80/80" alt="" width={80} height={80} loading="lazy" className="mx-auto h-8 w-8 rounded-full object-cover" />
+            <img
+              src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=120&h=120&fit=crop&q=70&auto=format"
+              alt=""
+              width={120}
+              height={120}
+              loading="lazy"
+              className="mx-auto h-11 w-11 rounded-xl object-cover"
+            />
             <p className="mt-1 text-[4px] font-bold">Glow Serum</p>
             <p className="text-[3px] text-zinc-500">Rs. 3,900</p>
           </div>
           <div className="flex-1 rounded-md bg-white p-1.5 text-center shadow-sm">
-            <img src="https://picsum.photos/seed/bloom-cream/80/80" alt="" width={80} height={80} loading="lazy" className="mx-auto h-8 w-8 rounded-full object-cover" />
+            <img
+              src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=120&h=120&fit=crop&q=70&auto=format"
+              alt=""
+              width={120}
+              height={120}
+              loading="lazy"
+              className="mx-auto h-11 w-11 rounded-xl object-cover"
+            />
             <p className="mt-1 text-[4px] font-bold">Calm Cream</p>
             <p className="text-[3px] text-zinc-500">Rs. 2,800</p>
           </div>
+        </div>
+        <div className="mt-2 rounded-md bg-white p-1.5 text-center shadow-sm">
+          <p className="text-[5px] font-bold text-amber-500">★★★★★</p>
+          <p className="text-[3.5px] text-zinc-500">"My skin has never felt better" — 2,300+ happy customers</p>
         </div>
         <div className="mt-auto rounded-full bg-zinc-900 px-2 py-1 text-center text-[4px] font-bold tracking-wide text-white">SHOP THE COLLECTION →</div>
       </div>
@@ -183,7 +230,14 @@ function MiniLogistics() {
             </div>
           ))}
         </div>
-        <img src="https://picsum.photos/seed/northline-truck/260/50" alt="" width={260} height={50} loading="lazy" className="mt-2 h-7 w-full rounded object-cover" />
+        <img
+          src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=320&h=110&fit=crop&q=70&auto=format"
+          alt=""
+          width={320}
+          height={110}
+          loading="lazy"
+          className="mt-auto h-10 w-full rounded object-cover"
+        />
       </div>
     </BrowserChrome>
   );
@@ -194,7 +248,14 @@ function MiniChef() {
     <BrowserChrome>
       <div className="flex h-full flex-col bg-white p-2.5 text-zinc-900">
         <div className="flex gap-2">
-          <img src="https://picsum.photos/seed/chef-nimal/56/56" alt="" width={56} height={56} loading="lazy" className="size-7 rounded-full object-cover" />
+          <img
+            src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=120&h=120&fit=crop&q=70&auto=format"
+            alt=""
+            width={120}
+            height={120}
+            loading="lazy"
+            className="size-8 rounded-full object-cover"
+          />
           <div>
             <p className="text-[5px] font-bold">Nimal Perera</p>
             <p className="text-[3px] text-zinc-500">Executive Chef · 12 yrs · Colombo</p>
@@ -218,6 +279,10 @@ function MiniChef() {
           <span className="rounded-full bg-zinc-100 px-1.5 py-0.5">Sri Lankan</span>
           <span className="rounded-full bg-zinc-100 px-1.5 py-0.5">French</span>
           <span className="rounded-full bg-zinc-100 px-1.5 py-0.5">Pastry</span>
+        </div>
+        <div className="mt-auto flex items-center justify-between rounded-md bg-zinc-900 px-2 py-1 text-[4px] text-zinc-300">
+          <span>Available for events</span>
+          <span className="text-white">★ 4.9 rated</span>
         </div>
       </div>
     </BrowserChrome>
