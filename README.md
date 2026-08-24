@@ -28,6 +28,7 @@ Modern dark studio site for a Sri Lankan partner business. Includes launch prici
 - **Source:** `lumora/` (Vite + React + TypeScript + Tailwind v4 + Motion)
 - **Stack:** Vite, React 19, TypeScript, Tailwind CSS v4, Motion, Phosphor Icons
 - **Build:** `cd lumora && npm install && npm run build`
+- **Business email:** labsvyn@gmail.com
 
 ## Tech Stack
 
@@ -43,6 +44,14 @@ Modern dark studio site for a Sri Lankan partner business. Includes launch prici
 - [GitHub](https://github.com/DilumSaluka)
 - Email: dilumsaluka965@gmail.com
 
-## License & Copyright
+## License & Copyright — NO UNAUTHORIZED USE
 
-© 2026 Dilum Saluka & VYN Labs. All rights reserved.
+> ### ⚠️ ALL RIGHTS RESERVED
+>
+> **Copyright (c) 2026 Dilum Saluka & VYN Labs. All rights reserved.**
+>
+> **No one is allowed to copy, reuse, clone, fork, modify, redistribute, or republish** any part of this website or the VYN Labs project (`lumora/`) — including the code, design, branding, logo, text, pricing content, images, or animations — **without written permission** from Dilum Saluka and VYN Labs.
+>
+> Unauthorized use will be treated as copyright infringement and may result in a DMCA takedown and further legal action.
+>
+> **Contact for permission:** labsvyn@gmail.com

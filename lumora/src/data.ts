@@ -12,7 +12,7 @@ import {
 } from "@phosphor-icons/react";
 
 export const CONTACT = {
-  email: "hello@vynlabs.lk", // TODO: replace with your real email
+  email: "labsvyn@gmail.com",
   whatsappNumber: "+94770000000", // TODO: replace with your real WhatsApp number (digits only, country code first)
   whatsappDisplay: "+94 77 000 0000", // TODO: replace with your real number for display
   location: "Colombo, Sri Lanka",
