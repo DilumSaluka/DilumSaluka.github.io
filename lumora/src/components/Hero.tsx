@@ -90,13 +90,13 @@ export function Hero() {
             className="absolute left-0 top-6 w-[68%] rotate-[-4deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[-2deg]"
           >
             <img
-              src="https://picsum.photos/seed/lumora-hero-studio/720/900"
-              alt="Creative studio workspace with design work in progress"
+              src="https://images.unsplash.com/photo-1499951360447-b19be2c0e1a8?w=720&h=900&fit=crop&q=80&auto=format"
+              alt="Modern website displayed on a laptop in a bright studio workspace"
               width={720}
               height={900}
               fetchPriority="high"
               loading="eager"
-              className="aspect-[4/5] w-full object-cover grayscale-[35%]"
+              className="aspect-[4/5] w-full object-cover grayscale-[18%]"
             />
           </motion.figure>
           <motion.figure
@@ -104,12 +104,12 @@ export function Hero() {
             className="absolute bottom-0 right-0 w-[58%] rotate-[3deg] overflow-hidden rounded-2xl border border-volt/30 shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-[1.5deg]"
           >
             <img
-              src="https://picsum.photos/seed/lumora-hero-brand/680/850"
-              alt="Brand identity materials laid out on a desk"
+              src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=680&h=850&fit=crop&q=80&auto=format"
+              alt="Clean dashboard and brand design system on screen"
               width={680}
               height={850}
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover grayscale-[15%]"
+              loading="eager"
+              className="aspect-[4/5] w-full object-cover grayscale-[12%]"
             />
           </motion.figure>
           <div
