@@ -28,12 +28,12 @@ export function VynMark({ className = "" }: { className?: string }) {
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
+    <a href="#top" className={`group flex items-center gap-2.5 ${className}`}>
       <span
         aria-hidden="true"
-        className="grid size-9 place-items-center rounded-xl bg-volt text-ink"
+        className="grid size-9 place-items-center rounded-xl bg-volt text-ink shadow-[0_0_20px_rgba(200,241,105,0.25)] transition-all duration-500 group-hover:scale-105 group-hover:rotate-[-3deg] group-hover:shadow-[0_0_30px_rgba(200,241,105,0.45)]"
       >
-        <VynMark className="size-6" />
+        <VynMark className="size-6 transition-transform duration-500 group-hover:scale-110" />
       </span>
       <span className="font-display text-base font-bold uppercase tracking-[0.22em] text-zinc-50">
         VYN&nbsp;Labs

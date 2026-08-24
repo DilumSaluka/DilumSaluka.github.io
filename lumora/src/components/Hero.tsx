@@ -23,6 +23,8 @@ export function Hero() {
 
   return (
     <section id="top" ref={sectionRef} className="relative overflow-hidden">
+      {/* Grid pattern — Aceternity style */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
       {/* Ambient glow, tinted to accent — no purple */}
       <div
         aria-hidden="true"
@@ -44,7 +46,7 @@ export function Hero() {
             className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl"
           >
             We make small businesses look{" "}
-            <em className="pb-1 leading-[1.1] text-volt not-italic">
+            <em className="shiny-volt pb-1 leading-[1.1] not-italic">
               world-class
             </em>{" "}
             online.

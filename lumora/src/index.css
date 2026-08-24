@@ -80,6 +80,28 @@ body {
   transform: translateX(130%) skewX(-14deg);
 }
 
+/* Shiny volt text — React Bits style for hero */
+.shiny-volt {
+  background: linear-gradient(90deg, #c8f169 0%, #ffffff 50%, #c8f169 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+/* Subtle grid pattern — Aceternity style */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+}
+
 /* FAQ answer slide-in when opened */
 @keyframes faq-in {
   from {
@@ -107,5 +129,12 @@ details[open] .faq-body {
   }
   details[open] .faq-body {
     animation: none;
+  }
+  .shiny-volt {
+    animation: none !important;
+    background: none !important;
+    color: var(--color-volt) !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
   }
 }
