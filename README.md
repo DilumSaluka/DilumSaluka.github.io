@@ -16,6 +16,7 @@ BSc Ethical Hacking & Network Security student at NIBM (Coventry University coll
 
 ## Projects Featured
 
+- **Sri Lankan Defense Power** — Public-record reference for Sri Lanka's defence establishment (Army, Navy, Air Force, Police, MOD agencies & intelligence) — **live at [dilumsaluka.github.io/SriLankan-Defense-Power](https://dilumsaluka.github.io/SriLankan-Defense-Power/)** — `SriLankan-Defense-Power/` (single-file HTML + `commanders.js` + `weapons.js`, Tailwind CDN, Wikimedia Commons) — see `SriLankan-Defense-Power/README.md` for the full brief
 - **VibeNav** - Android navigation app using Swipeable Tab Layout
 - **Sweep-Helper** - Windows system cleanup tool built with C# .NET
 - **VYN Labs** - Modern digital studio website (Web Design, AI Content & Automation) — live at [dilumsaluka.github.io/vyn-labs](https://dilumsaluka.github.io/vyn-labs/)
@@ -29,6 +30,16 @@ Modern dark studio site for a Sri Lankan partner business. Includes launch prici
 - **Stack:** Vite, React 19, TypeScript, Tailwind CSS v4, Motion, Phosphor Icons
 - **Build:** `cd lumora && npm install && npm run build`
 - **Business email:** labsvyn@gmail.com
+
+## Sri Lankan Defense Power — Public Record Reference
+
+Single-file reference site for Sri Lanka's defence establishment. See `SriLankan-Defense-Power/README.md` for the full 13-step brief, data schema and photo-sourcing rules.
+
+- **Live:** https://dilumsaluka.github.io/SriLankan-Defense-Power/
+- **Source:** `SriLankan-Defense-Power/` — `index.html` (500+ edits → now data + template), `commanders.js`, `weapons.js`, `logos/`, `img/`, `graphify-out/`
+- **Stack:** HTML5, Tailwind CDN, Vanilla JS, Wikimedia Commons `Special:Redirect`, Graphify
+- **Run:** `start SriLankan-Defense-Power/index.html` — no build step — then `graphify update .` after code changes
+- **Contributor:** Dilum Saluka — `dilumsaluka965@gmail.com`
 
 ## Tech Stack
 
